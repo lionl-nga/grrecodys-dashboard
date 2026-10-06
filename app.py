@@ -65,13 +65,13 @@ if not st.session_state.authenticated:
     st.stop()
 
 
-# --- BASE DE DONNÉES PANAFRICAINE DES CTD ---
+# --- BASE DE DONNÉES PANAFRICAINE DES CTD RECORRIGÉE ---
 PANAFRICAN_DATABASE = {
     "Cameroun": {
         "Devise": "FCFA (XAF)",
         "Communes": {
             "Commune d'Obala": {
-                "G": {"details": "Groupes Facebook/WhatsApp communautaires actifs, pas de civic tech outillée.", "score": 3.0},
+                "G": {"details": "Groupes Facebook/WhatsApp actifs, pas de civic tech outillée.", "score": 3.0},
                 "R1": {"details": "Pas de permanence WhatsApp Business. Diaspora active mais non centralisée.", "score": 2.5},
                 "R2": {"details": "Données budgétaires partagées uniquement sur affichage physique légal.", "score": 1.5},
                 "E": {"details": "Fiche Google Maps existante mais non revendiquée, avis citoyens moyens.", "score": 3.5},
@@ -144,14 +144,25 @@ PANAFRICAN_DATABASE = {
                 "S": {"details": "Files d'attente physiques importantes, interconnectivité faible.", "score": 1.5}
             }
         }
-    },
-    "Gabon": {
-        "Devise": "FCFA (XAF)",
-        "Communes": {
-            "Mairie d'Akanda (Libreville)": {
-                "G": {"details": "Communautés résidentielles connectées, initiatives écologiques partagées.", "score": 3.5},
-                "R1": {"details": "Accueil numérique embryonnaire mais réactif sur la messagerie officielle.", "score": 2.5},
-                "R2": {"details": "Suivi des taxes municipales semi-automatisé, pas d'open data public.", "score": 2.5},
-                "E": {"details": "Fiches Google Maps à jour pour les zones résidentielles et hôtelières.", "score": 3.5},
-                "C": {"details": "Page institutionnelle propre, graphismes soignés lors des communiqués.", "score": 3.0},
-                "D": {"details": "Zone à fort pouvoir d'achat, peu de valorisation des petits artisans en ligne.", "score": 2.0},
+    }
+}
+
+GENERIC_AFRICA_DATA = {
+    "G": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 2.0},
+    "R1": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 1.5},
+    "R2": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 1.5},
+    "E": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 2.0},
+    "C": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 2.0},
+    "D": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 2.0},
+    "S": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 1.0}
+}
+
+# --- BARRE LATÉRALE D'ADMINISTRATION PANAFRICAINE ---
+with st.sidebar:
+    st.markdown("## GRRECODYS©")
+    st.markdown("Système d'Audit Panafricain")
+    st.markdown("---")
+    
+    pays_options = list(PANAFRICAN_DATABASE.keys()) + ["Autre pays d'Afrique"]
+    pays_choisi = st.selectbox("🌍 Pays d'évaluation", pays_options, index=0)
+    
