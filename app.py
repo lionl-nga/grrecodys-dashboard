@@ -65,13 +65,13 @@ if not st.session_state.authenticated:
     st.stop()
 
 
-# --- BASE DE DONNÉES PANAFRICAINE DES CTD RECORRIGÉE ---
+# --- BASE DE DONNÉES PANAFRICAINE DES CTD ---
 PANAFRICAN_DATABASE = {
     "Cameroun": {
         "Devise": "FCFA (XAF)",
         "Communes": {
             "Commune d'Obala": {
-                "G": {"details": "Groupes Facebook/WhatsApp actifs, pas de civic tech outillée.", "score": 3.0},
+                "G": {"details": "Groupes Facebook/WhatsApp communautaires actifs, pas de civic tech outillée.", "score": 3.0},
                 "R1": {"details": "Pas de permanence WhatsApp Business. Diaspora active mais non centralisée.", "score": 2.5},
                 "R2": {"details": "Données budgétaires partagées uniquement sur affichage physique légal.", "score": 1.5},
                 "E": {"details": "Fiche Google Maps existante mais non revendiquée, avis citoyens moyens.", "score": 3.5},
@@ -157,12 +157,4 @@ GENERIC_AFRICA_DATA = {
     "S": {"details": "Données régionales moyennes d'Afrique Subsaharienne.", "score": 1.0}
 }
 
-# --- BARRE LATÉRALE D'ADMINISTRATION PANAFRICAINE ---
-with st.sidebar:
-    st.markdown("## GRRECODYS©")
-    st.markdown("Système d'Audit Panafricain")
-    st.markdown("---")
-    
-    pays_options = list(PANAFRICAN_DATABASE.keys()) + ["Autre pays d'Afrique"]
-    pays_choisi = st.selectbox("🌍 Pays d'évaluation", pays_options, index=0)
-    
+PILLARS = {
